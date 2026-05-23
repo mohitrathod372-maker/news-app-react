@@ -10,3 +10,4 @@ export const fetchNews = async (query = "india") => {
 
   return response.data.articles;
 };
+
