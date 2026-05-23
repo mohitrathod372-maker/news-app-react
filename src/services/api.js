@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "13170c631efc4f6385cbfe4a12cf6f68";
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 export const fetchNews = async (query = "india") => {
 
