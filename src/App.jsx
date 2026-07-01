@@ -13,7 +13,7 @@ export default function App() {
       <Header onSearch={setSearchQuery} />
       
      
-      <div className="w-full overflow-x-hidden">
+      <div className="pt-18 w-full overflow-x-hidden">
         <NewsCard searchQuery={searchQuery} />
       </div>
     </div>
