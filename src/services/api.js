@@ -1,16 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
 
-const API_KEY = import.meta.env.VITE_API_KEY;
+export const fetchNews = async (query) => {
+ const token = import.meta.env.VITE_API_KEY;  
+  const searchQuery = query && query.trim() !== "" ? query.trim() : "india";
 
-export const fetchNews = async (query = "india") => {
+
+  const url = `/api/news/search?q=${encodeURIComponent(searchQuery)}&token=${token}&lang=en`;
+
   try {
-    const response = await axios.get(
-      `https://gnews.io/api/v4/search?q=${query}&token=${API_KEY}&lang=en`
-    );
-
-    return response.data.articles;
+    const response = await axios.get(url);
+    return response.data.articles || [];
   } catch (error) {
-    console.log("Error fetching news:", error);
+    console.error("Fetch error:", error.response ? error.response.data : error.message);
     return [];
   }
 };
